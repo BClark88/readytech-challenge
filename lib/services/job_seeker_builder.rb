@@ -12,6 +12,7 @@ class JobSeekerBuilder
 
       job_seekers.push(job_seeker)
     end
+
     job_seekers
   end
 
