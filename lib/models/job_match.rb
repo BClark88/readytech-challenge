@@ -13,11 +13,11 @@ class JobMatch
     @job = job
   end
 
-  def matching_skill_percent
-    @matching_skill_percent ||= begin
-      match_count = job.required_skills.count { |required_skill| job_seeker.skills.include?(required_skill) }
+  def matching_skill_count
+    @matching_skill_count ||= job.required_skills.count { |required_skill| job_seeker.skills.include?(required_skill) }
+  end
 
-      (match_count.fdiv(job.required_skills.count) * 100).round(1)
-    end
+  def matching_skill_percent
+    @matching_skill_percent ||= (matching_skill_count.fdiv(job.required_skills.count) * 100).round(1)
   end
 end

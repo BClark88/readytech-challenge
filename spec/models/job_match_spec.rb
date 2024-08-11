@@ -10,6 +10,12 @@ RSpec.describe JobMatch do
   let(:job) { Job.new(id: 1337, title: 'Code Overlord', required_skills: ['C#', 'Ruby', 'Javascript']) }
   subject(:job_match) { JobMatch.new(job_seeker:, job:) }
 
+  describe '#matching_skill_count' do
+    it "returns the count of a JobSeeker's skills that match the Job's required skills" do
+      expect(job_match.matching_skill_count).to eq(2)
+    end
+  end
+
   describe '#matching_skill_percent' do
     it "returns the percentage of a JobSeeker's skills that match the Job's required skills" do
       expect(job_match.matching_skill_percent).to eq(66.7)
