@@ -1,0 +1,19 @@
+require: rubocop-performance
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'config/**/*'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+    - 'spec/factories/*'
+    - 'bin/setup'
+    - 'bin/update'
+
+  DisplayCopNames: true
