@@ -6,7 +6,6 @@ require_relative 'services/job_matcher'
 
 class CLI
   def run(jobs_csv_path:, job_seekers_csv_path:)
-    # byebug
     jobs = JobBuilder.new.call(CSV.open(jobs_csv_path, headers: true))
     job_seekers = JobSeekerBuilder.new.call(CSV.open(job_seekers_csv_path, headers: true))
     matched_jobs = JobMatcher.new(jobs:, job_seekers:).call

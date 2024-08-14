@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative '../models/job_match'
-require 'byebug'
 
 class JobMatcher
   def initialize(jobs:, job_seekers:)
