@@ -2,8 +2,8 @@
 
 # Represents a skill match between a job and a job seeker
 
-require_relative './job_seeker'
-require_relative './job'
+require_relative 'job_seeker'
+require_relative 'job'
 
 class JobMatch
   attr_reader :job_seeker, :job
