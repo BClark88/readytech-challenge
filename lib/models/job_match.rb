@@ -13,6 +13,22 @@ class JobMatch
     @job = job
   end
 
+  def job_seeker_id
+    job_seeker.id
+  end
+
+  def job_seeker_name
+    job_seeker.name
+  end
+
+  def job_id
+    job.id
+  end
+
+  def job_title
+    job.title
+  end
+
   def matching_skill_count
     @matching_skill_count ||= job.required_skills.count { |required_skill| job_seeker.skills.include?(required_skill) }
   end
