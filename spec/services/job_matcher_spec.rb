@@ -12,10 +12,9 @@ RSpec.describe JobMatcher do
   end
 
   let(:jobs) do
-    [
-      ruby_job,
-      front_end_job
-    ]
+    array_of_jobs = [ruby_job, front_end_job]
+
+    array_of_jobs.sort_by(&:id).reverse
   end
 
   let(:job_seeker_alice) do
@@ -27,16 +26,15 @@ RSpec.describe JobMatcher do
   end
 
   let(:job_seekers) do
-    [
-      job_seeker_alice,
-      job_seeker_bob
-    ]
+    array_of_seekers = [job_seeker_alice, job_seeker_bob]
+
+    array_of_seekers.sort_by(&:id).reverse
   end
 
   subject(:job_matcher) { JobMatcher.new(jobs:, job_seekers:).call }
 
   describe '#call' do
-    it 'returns an array of JobSeeker objects' do
+    it 'returns an array of JobSeeker objects, sorted by Jobseeker.id and suitability' do
       expect(job_matcher[0].job_seeker).to eq(job_seeker_alice)
       expect(job_matcher[0].job).to eq(ruby_job)
 
@@ -44,10 +42,10 @@ RSpec.describe JobMatcher do
       expect(job_matcher[1].job).to eq(front_end_job)
 
       expect(job_matcher[2].job_seeker).to eq(job_seeker_bob)
-      expect(job_matcher[2].job).to eq(ruby_job)
+      expect(job_matcher[2].job).to eq(front_end_job)
 
       expect(job_matcher[3].job_seeker).to eq(job_seeker_bob)
-      expect(job_matcher[3].job).to eq(front_end_job)
+      expect(job_matcher[3].job).to eq(ruby_job)
     end
   end
 end

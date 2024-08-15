@@ -8,12 +8,12 @@ class JobSeekerBuilder
     job_seeker_csv.each do |row|
       parsed_skills = parse_skills(row['skills'])
 
-      job_seeker = JobSeeker.new(id: row['id'], name: row['name'], skills: parsed_skills)
+      job_seeker = JobSeeker.new(id: row['id'].to_i, name: row['name'], skills: parsed_skills)
 
       job_seekers.push(job_seeker)
     end
 
-    job_seekers
+    job_seekers.sort_by(&:id)
   end
 
   private

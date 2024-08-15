@@ -8,7 +8,7 @@ class JobBuilder
     jobs_csv.each do |row|
       parsed_skills = parse_skills(row['required_skills'])
 
-      job = Job.new(id: row['id'], title: row['title'], required_skills: parsed_skills)
+      job = Job.new(id: row['id'].to_i, title: row['title'], required_skills: parsed_skills)
 
       jobs.push(job)
     end
