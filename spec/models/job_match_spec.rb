@@ -8,7 +8,7 @@ RSpec.describe JobMatch do
 
   let(:job_seeker) { JobSeeker.new(id: 42, name: 'Jackie Daytona', skills: ['C#', 'Ruby']) }
   let(:job) { Job.new(id: 1337, title: 'Code Overlord', required_skills: ['C#', 'Ruby', 'Javascript']) }
-  subject(:job_match) { JobMatch.new(job_seeker:, job:) }
+  subject(:job_match) { described_class.new(job_seeker:, job:) }
 
   describe '#job_seeker_id' do
     it 'returns the id of the job_seeker' do

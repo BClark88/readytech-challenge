@@ -31,7 +31,7 @@ RSpec.describe JobMatcher do
     array_of_seekers.sort_by(&:id).reverse
   end
 
-  subject(:job_matcher) { JobMatcher.new(jobs:, job_seekers:).call }
+  subject(:job_matcher) { described_class.new(jobs:, job_seekers:).call }
 
   describe '#call' do
     it 'returns an array of JobSeeker objects, sorted by Jobseeker.id and suitability' do

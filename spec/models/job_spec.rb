@@ -7,7 +7,7 @@ RSpec.describe Job do
   let(:title) { 'Keyboard Warrior' }
   let(:required_skills) { ['C#', 'Ruby', 'Javascript'] }
 
-  subject(:job) { Job.new(id:, title:, required_skills:) }
+  subject(:job) { described_class.new(id:, title:, required_skills:) }
 
   describe 'attributes' do
     it 'has an id' do
