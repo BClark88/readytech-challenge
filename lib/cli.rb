@@ -3,6 +3,7 @@
 require_relative 'services/job_builder'
 require_relative 'services/job_seeker_builder'
 require_relative 'services/job_matcher'
+require_relative 'services/output_printer'
 
 class CLI
   def run(jobs_csv_path:, job_seekers_csv_path:)
@@ -10,28 +11,6 @@ class CLI
     job_seekers = JobSeekerBuilder.new.call(CSV.open(job_seekers_csv_path, headers: true))
     matched_jobs = JobMatcher.new(jobs:, job_seekers:).call
 
-    print_output(matched_jobs)
-  end
-
-  private
-
-  HEADERS = 'jobseeker_id,jobseeker_name,job_id,job_title,matching_skill_count,matching_skill_percent'
-
-  def print_output(matched_jobs)
-    output = StringIO.new
-    output.puts(HEADERS)
-
-    matched_jobs.each do |matched_job|
-      line = "#{matched_job.job_seeker_id},"
-      line += "#{matched_job.job_seeker_name},"
-      line += "#{matched_job.job_id},"
-      line += "#{matched_job.job_title},"
-      line += "#{matched_job.matching_skill_count},"
-      line += "#{matched_job.matching_skill_percent},"
-
-      output.puts(line)
-    end
-
-    output
+    OutputPrinter.new.call(matched_jobs:)
   end
 end
