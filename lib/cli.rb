@@ -22,10 +22,10 @@ class CLI
     output.puts(HEADERS)
 
     matched_jobs.each do |matched_job|
-      line = "#{matched_job.job_seeker.id},"
-      line += "#{matched_job.job_seeker.name},"
-      line += "#{matched_job.job.id},"
-      line += "#{matched_job.job.title},"
+      line = "#{matched_job.job_seeker_id},"
+      line += "#{matched_job.job_seeker_name},"
+      line += "#{matched_job.job_id},"
+      line += "#{matched_job.job_title},"
       line += "#{matched_job.matching_skill_count},"
       line += "#{matched_job.matching_skill_percent},"
 
