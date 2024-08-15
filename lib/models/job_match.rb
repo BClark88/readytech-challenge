@@ -6,8 +6,6 @@ require_relative 'job_seeker'
 require_relative 'job'
 
 class JobMatch
-  attr_reader :job_seeker, :job
-
   def initialize(job_seeker:, job:)
     @job_seeker = job_seeker
     @job = job
