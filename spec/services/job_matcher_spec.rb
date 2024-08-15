@@ -35,17 +35,17 @@ RSpec.describe JobMatcher do
 
   describe '#call' do
     it 'returns an array of JobSeeker objects, sorted by Jobseeker.id and suitability' do
-      expect(job_matcher[0].job_seeker).to eq(job_seeker_alice)
-      expect(job_matcher[0].job).to eq(ruby_job)
+      expect(job_matcher[0].job_seeker_id).to eq(job_seeker_alice.id)
+      expect(job_matcher[0].job_id).to eq(ruby_job.id)
 
-      expect(job_matcher[1].job_seeker).to eq(job_seeker_alice)
-      expect(job_matcher[1].job).to eq(front_end_job)
+      expect(job_matcher[1].job_seeker_id).to eq(job_seeker_alice.id)
+      expect(job_matcher[1].job_id).to eq(front_end_job.id)
 
-      expect(job_matcher[2].job_seeker).to eq(job_seeker_bob)
-      expect(job_matcher[2].job).to eq(front_end_job)
+      expect(job_matcher[2].job_seeker_id).to eq(job_seeker_bob.id)
+      expect(job_matcher[2].job_id).to eq(front_end_job.id)
 
-      expect(job_matcher[3].job_seeker).to eq(job_seeker_bob)
-      expect(job_matcher[3].job).to eq(ruby_job)
+      expect(job_matcher[3].job_seeker_id).to eq(job_seeker_bob.id)
+      expect(job_matcher[3].job_id).to eq(ruby_job.id)
     end
   end
 end

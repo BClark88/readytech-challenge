@@ -32,7 +32,7 @@ class JobMatcher
     # sort_by! sorts by the lowest value, so make matching_skill_percent a negative number
     # not the nicest approach, but it avoids hard to read comparisons, and additional iterations
     job_matches.sort_by! do |job_match|
-      [job_match.job_seeker.id, -job_match.matching_skill_percent, job_match.job.id]
+      [job_match.job_seeker_id, -job_match.matching_skill_percent, job_match.job_id]
     end
   end
 end

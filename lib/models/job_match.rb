@@ -12,26 +12,28 @@ class JobMatch
   end
 
   def job_seeker_id
-    job_seeker.id
+    @job_seeker.id
   end
 
   def job_seeker_name
-    job_seeker.name
+    @job_seeker.name
   end
 
   def job_id
-    job.id
+    @job.id
   end
 
   def job_title
-    job.title
+    @job.title
   end
 
   def matching_skill_count
-    @matching_skill_count ||= job.required_skills.count { |required_skill| job_seeker.skills.include?(required_skill) }
+    @matching_skill_count ||= @job.required_skills.count do |required_skill|
+      @job_seeker.skills.include?(required_skill)
+    end
   end
 
   def matching_skill_percent
-    @matching_skill_percent ||= (matching_skill_count.fdiv(job.required_skills.count) * 100).round(1)
+    @matching_skill_percent ||= (matching_skill_count.fdiv(@job.required_skills.count) * 100).round(1)
   end
 end
